@@ -25,12 +25,12 @@
         this.skybox = new Skybox(3000, 3000, 3000);
         this.skybox.load(scene);
 
-        this.heightmap = new Heightmap(500, 25, 500);
+        this.heightmap = new Heightmap(750, 50, 750);
         this.heightmap.load(scene);
 
         this.camera = new Camera();
 
-        this.player = new Player(2, 20);
+        this.player = new Player(2, 16);
         this.player.load(this.camera);
 
         this.weapon = new Weapon(0.1, 1, 0.1);
