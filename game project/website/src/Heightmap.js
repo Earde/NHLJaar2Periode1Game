@@ -8,6 +8,8 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var MeshBasicMaterial = THREE.MeshBasicMaterial;
+var MeshPhongMaterial = THREE.MeshPhongMaterial;
 var Heightmap = (function (_super) {
     __extends(Heightmap, _super);
     function Heightmap(w, h, d) {
@@ -36,13 +38,27 @@ var Heightmap = (function (_super) {
         var imageName = "heightmap1";
         var imageSuffix = ".png";
         img.onload = function () {
-            var material = _this.createMaterial(true, THREE.DoubleSide, 1, 1, imagePrefix + imageName + imageSuffix);
+            //var material = this.createMaterial(true, THREE.BackSide, 1, 1, imagePrefix + imageName + imageSuffix);
+            var material = new MeshPhongMaterial();
+            material.side = THREE.BackSide;
+            material.vertexColors = THREE.VertexColors;
             material.wireframe = false;
+            material.needsUpdate = true;
             _this.material = material;
             var geometry = new THREE.PlaneGeometry(_this.width, _this.depth, img.width - 1, img.height - 1);
             var data = _this.getHeightData(img);
             for (var i = 0; i < geometry.vertices.length; i++) {
                 geometry.vertices[i].z -= data[i] / 255 * _this.height;
+            }
+            var indices = ['a', 'b', 'c', 'd'];
+            for (var i = 0; i < geometry.faces.length; i++) {
+                var sides = (geometry.faces[i] instanceof THREE.Face3) ? 3 : 4;
+                for (var j = 0; j < sides; j++) {
+                    var color = new THREE.Color(0xffffff);
+                    var position = geometry.vertices[geometry.faces[i][indices[j]]];
+                    color.setRGB(0.7 + (Math.abs(position.x) / (_this.width / 2)) * 0.3, 1.0 - (0.5 + (Math.abs(position.z) / (_this.height / 2)) * 0.5), (Math.abs(position.y) / (_this.depth / 2)) * 0.25);
+                    geometry.faces[i].vertexColors[j] = color;
+                }
             }
             geometry.verticesNeedUpdate = true;
             geometry.computeFaceNormals();

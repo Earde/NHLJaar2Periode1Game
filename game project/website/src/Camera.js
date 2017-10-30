@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 var Camera = (function (_super) {
     __extends(Camera, _super);
     function Camera() {
-        var _this = _super.call(this, 90, window.innerWidth / window.innerHeight, 0.1, 2000) || this;
+        var _this = _super.call(this, 90, window.innerWidth / window.innerHeight, 0.1, 6000) || this;
         _this.lon = 0;
         _this.lat = 0;
         _this.verticalMin = -89;

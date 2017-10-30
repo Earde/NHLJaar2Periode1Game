@@ -8,7 +8,7 @@
     horizontalSpeed = 5;
 
     constructor() {
-        super(90, window.innerWidth / window.innerHeight, 0.1, 2000);
+        super(90, window.innerWidth / window.innerHeight, 0.1, 6000);
     }
 
     public update(delta, keyMap, mouseX, mouseY, creator) {

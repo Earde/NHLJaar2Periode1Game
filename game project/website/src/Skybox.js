@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 var Skybox = (function (_super) {
     __extends(Skybox, _super);
     function Skybox(w, h, d) {
-        var _this = _super.call(this, new THREE.BoxGeometry(w, h, d), new THREE.Material(), w, h, d) || this;
+        var _this = _super.call(this, new THREE.BoxGeometry(w, h, d), new THREE.MeshBasicMaterial(), w, h, d) || this;
         _this.castShadow = false;
         _this.receiveShadow = false;
         return _this;

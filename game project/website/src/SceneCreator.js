@@ -4,7 +4,7 @@ var SceneCreator = (function () {
         this.scene = s;
     }
     SceneCreator.prototype.load = function () {
-        this.skybox = new Skybox(1000, 1000, 1000);
+        this.skybox = new Skybox(3000, 3000, 3000);
         this.skybox.load(scene);
         this.heightmap = new Heightmap(500, 25, 500);
         this.heightmap.load(scene);

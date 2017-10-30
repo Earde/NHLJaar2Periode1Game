@@ -1,6 +1,6 @@
 ﻿class Skybox extends MeshLoader {
     constructor(w, h, d) {
-        super(new THREE.BoxGeometry(w, h, d), new THREE.Material(), w, h, d);
+        super(new THREE.BoxGeometry(w, h, d), new THREE.MeshBasicMaterial(), w, h, d);
         this.castShadow = false;
         this.receiveShadow = false;
     }

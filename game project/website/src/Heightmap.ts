@@ -1,4 +1,7 @@
-﻿class Heightmap extends MeshLoader {
+﻿import MeshBasicMaterial = THREE.MeshBasicMaterial;
+import MeshPhongMaterial = THREE.MeshPhongMaterial;
+
+class Heightmap extends MeshLoader {
     constructor(w, h, d) {
         super(new THREE.PlaneGeometry(w, d), new THREE.Material(), w, h, d);
         this.castShadow = false;
@@ -25,13 +28,27 @@
         let imageName = "heightmap1";
         let imageSuffix = ".png";
         img.onload = () => {
-            var material = this.createMaterial(true, THREE.DoubleSide, 1, 1, imagePrefix + imageName + imageSuffix);
+            //var material = this.createMaterial(true, THREE.BackSide, 1, 1, imagePrefix + imageName + imageSuffix);
+            var material = new MeshPhongMaterial();
+            material.side = THREE.BackSide;
+            material.vertexColors = THREE.VertexColors;
             material.wireframe = false;
+            material.needsUpdate = true;
             this.material = material;
             var geometry = new THREE.PlaneGeometry(this.width, this.depth, img.width - 1, img.height - 1);
             var data = this.getHeightData(img);
             for (let i = 0; i < geometry.vertices.length; i++) {
                 geometry.vertices[i].z -= data[i] / 255 * this.height;
+            }
+            let indices = ['a', 'b', 'c', 'd'];
+            for (let i = 0; i < geometry.faces.length; i++) {
+                let sides = (geometry.faces[i] instanceof THREE.Face3) ? 3 : 4;
+                for (let j = 0; j < sides; j++) {
+                    let color = new THREE.Color(0xffffff);
+                    let position = geometry.vertices[geometry.faces[i][indices[j]]];
+                    color.setRGB(0.7 + (Math.abs(position.x) / (this.width / 2)) * 0.3, 1.0 - (0.5 + (Math.abs(position.z) / (this.height / 2)) * 0.5), (Math.abs(position.y) / (this.depth / 2)) * 0.25);
+                    geometry.faces[i].vertexColors[j] = color;
+                }
             }
             geometry.verticesNeedUpdate = true;
             geometry.computeFaceNormals();

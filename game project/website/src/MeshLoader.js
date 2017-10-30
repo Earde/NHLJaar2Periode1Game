@@ -33,7 +33,7 @@ var MeshLoader = (function (_super) {
         var texture = new THREE.TextureLoader().load(uri);
         texture.wrapS = material.wrapT = THREE.RepeatWrapping;
         texture.repeat.set(xSets, ySets);
-        texture.generateMipmaps = true;
+        //texture.generateMipmaps = true;
         material.map = texture;
         material.side = side;
         material.needsUpdate = true;
