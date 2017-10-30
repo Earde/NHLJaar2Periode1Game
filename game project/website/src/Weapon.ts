@@ -1,6 +1,6 @@
 class Weapon extends MeshLoader {
     shot = false;
-    power = 100;
+    power = 50;
 
     lookDistance = 0;
 

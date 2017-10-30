@@ -2,12 +2,15 @@ var Networking = (function () {
     //hier wordt de connectie met de server gemaakt
     function Networking(creator) {
         this.creator = creator;
-        this.socket = io('http://86.90.153.44:3000');
+        this.socket = io('https://86.90.153.44:443', { secure: true, rejectUnauthorized: false });
     }
     Networking.prototype.updatePlayer = function (data) {
         this.creator.player.updateFromNetwork(this.creator, data);
         var dataResponse = {};
         this.sendData("connectedResponse", dataResponse);
+    };
+    Networking.prototype.revivePlayer = function (data) {
+        this.creator.player.updateFromNetwork(this.creator, data);
     };
     Networking.prototype.updateEnemies = function (data) {
         for (var i = 0; i < this.creator.enemies.length; i++) {
@@ -15,7 +18,7 @@ var Networking = (function () {
         }
         for (var i = 0; i < data.length && i < this.creator.enemies.length; i++) {
             if (this.creator.player.playerID != data[i].id) {
-                this.creator.enemies[i].forceUpdateFromNetwork(data[i]);
+                this.creator.enemies[i].forceUpdateFromNetwork(data[i], creator);
                 this.creator.enemyBullets[i].updateID(data[i].id);
             }
         }
@@ -52,6 +55,9 @@ var Networking = (function () {
         }.bind(this));
         this.socket.on("enemyKilled", function (data) {
             this.updateEnemyKilled(data);
+        }.bind(this));
+        this.socket.on("playerKilled", function (data) {
+            this.revivePlayer(data);
         }.bind(this));
     };
     Networking.prototype.sendData = function (code, data) {

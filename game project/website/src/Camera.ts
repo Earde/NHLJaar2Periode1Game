@@ -75,8 +75,7 @@
         }
     }
 
-    public updateNetwork(pos, dir) {
-        this.position.set(pos.x, pos.y, pos.z);
-        this.rotation.set(dir.x, dir.y, dir.z);
+    public updateNetwork(pos) {
+        this.position.set(pos.x, 0, pos.y);
     }
 }

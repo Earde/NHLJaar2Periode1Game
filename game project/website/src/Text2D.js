@@ -20,14 +20,20 @@ var Text2D = (function (_super) {
     Text2D.prototype.load = function (scene) {
         scene.add(this);
     };
-    Text2D.prototype.update = function (camera) {
-        var target = camera.getWorldPosition().add(camera.getWorldDirection().multiplyScalar(this.depth));
-        this.position.set(target.x, target.y, target.z);
+    Text2D.prototype.update = function (camera, spacePressed) {
+        if (spacePressed) {
+            var target = camera.getWorldPosition().add(camera.getWorldDirection().multiplyScalar(this.depth));
+            this.position.set(target.x, target.y, target.z);
+            this.visible = true;
+        }
+        else {
+            this.visible = false;
+        }
     };
     Text2D.prototype.createText = function (message) {
         var parameters = {};
         parameters["fontface"] = "Arial";
-        parameters["fontsize"] = 10;
+        parameters["fontsize"] = 24;
         parameters["borderThickness"] = 1;
         parameters["borderColor"] = { r: 0, g: 0, b: 0, a: 1.0 };
         parameters["backgroundColor"] = { r: 255, g: 255, b: 255, a: 1.0 };

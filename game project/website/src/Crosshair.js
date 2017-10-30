@@ -10,14 +10,15 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var Crosshair = (function (_super) {
     __extends(Crosshair, _super);
-    function Crosshair(w, h, d) {
+    function Crosshair(w, h, d, color) {
         var _this = _super.call(this, new THREE.BoxGeometry(w, h, 0.01), new THREE.Material(), w, h, d) || this;
         _this.castShadow = false;
         _this.receiveShadow = false;
+        _this.color = color;
         return _this;
     }
     Crosshair.prototype.load = function (camera) {
-        var material = new THREE.LineBasicMaterial({ color: 0xAAFFAA });
+        var material = new THREE.LineBasicMaterial({ color: this.color });
         this.material = material;
         this.position.set(0, 0, -this.depth);
         _super.prototype.load.call(this, camera);

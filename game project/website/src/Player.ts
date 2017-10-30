@@ -23,6 +23,7 @@ class Player extends MeshLoader {
         let v = new THREE.Vector3(this.parent.getWorldPosition().x, this.parent.getWorldPosition().y + this.height, this.parent.getWorldPosition().z);
         this.parent.worldToLocal(v);
         this.lookAt(v); //dit moet nog gefixed worden, is nu vanuit camera perspectief en dit moet nog in wereld perspectief
+        this.rotateX(Math.PI / 2);
     }
 
     updateScore(data, creator) {
@@ -34,7 +35,7 @@ class Player extends MeshLoader {
 
     updateFromNetwork(creator, data) {
         this.playerID = data.id;
-        creator.camera.updateNetwork(new THREE.Vector3(data.posx, data.posy, data.posz), new THREE.Vector3(data.dirx, data.diry, data.dirz));
+        creator.camera.updateNetwork(new THREE.Vector2(creator.heightmap.width * data.percentagex - creator.heightmap.width / 2, creator.heightmap.depth * data.percentagez - creator.heightmap.depth / 2));
     }
 
     sendToNetwork(network: Networking, delta, creator) {

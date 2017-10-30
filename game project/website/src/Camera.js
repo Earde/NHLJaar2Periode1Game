@@ -82,9 +82,8 @@ var Camera = (function (_super) {
             }
         }
     };
-    Camera.prototype.updateNetwork = function (pos, dir) {
-        this.position.set(pos.x, pos.y, pos.z);
-        this.rotation.set(dir.x, dir.y, dir.z);
+    Camera.prototype.updateNetwork = function (pos) {
+        this.position.set(pos.x, 0, pos.y);
     };
     return Camera;
 }(THREE.PerspectiveCamera));

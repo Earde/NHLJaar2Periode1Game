@@ -14,16 +14,21 @@ class Text2D extends THREE.Sprite {
         scene.add(this);
     }
 
-    update(camera: Camera) {
-        let target = camera.getWorldPosition().add(camera.getWorldDirection().multiplyScalar(this.depth));
-        this.position.set(target.x, target.y, target.z);
+    update(camera: Camera, spacePressed) {
+        if (spacePressed) {
+            let target = camera.getWorldPosition().add(camera.getWorldDirection().multiplyScalar(this.depth));
+            this.position.set(target.x, target.y, target.z);
+            this.visible = true;
+        } else {
+            this.visible = false;
+        }
     }
 
     createText( message)
     {
         let parameters = {};
         parameters["fontface"] = "Arial";
-        parameters["fontsize"] = 10;
+        parameters["fontsize"] = 24;
         parameters["borderThickness"] = 1;
         parameters["borderColor"] = { r:0, g:0, b:0, a:1.0 };
         parameters["backgroundColor"] = { r:255, g:255, b:255, a:1.0 };

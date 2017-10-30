@@ -14,7 +14,7 @@ var Enemy = (function (_super) {
         var _this = _super.call(this, new THREE.CylinderGeometry(w, w, h), new THREE.Material(), w, h, w) || this;
         _this.enemyID = -1;
         _this.active = false;
-        _this.health = 0;
+        _this.health = 100;
         _this.score = 0;
         _this.oldPosition = new THREE.Vector2();
         _this.newestPosition = new THREE.Vector2();
@@ -50,13 +50,10 @@ var Enemy = (function (_super) {
         this.position.z = lerp.y;
         this.position.y = creator.heightmap.getHeightAt(this.position) + this.height / 2;
     };
-    Enemy.prototype.forceUpdateFromNetwork = function (data) {
+    Enemy.prototype.forceUpdateFromNetwork = function (data, creator) {
         this.active = true;
         this.enemyID = data.id;
-        this.position.set(data.posx, 0, data.posz);
-        this.rotation.set(data.dirx, data.diry, data.dirz);
-        this.health = data.health;
-        this.score = data.score;
+        this.position.set(creator.heightmap.width * data.percentagex - creator.heightmap.width / 2, 0, creator.heightmap.depth * data.percentagez - creator.heightmap.depth / 2);
     };
     Enemy.prototype.updateFromNetwork = function (data) {
         this.active = true;

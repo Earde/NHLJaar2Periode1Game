@@ -13,7 +13,7 @@ var Weapon = (function (_super) {
     function Weapon(w, h, d) {
         var _this = _super.call(this, new THREE.BoxGeometry(w, h, d), new THREE.Material(), w, h, d) || this;
         _this.shot = false;
-        _this.power = 100;
+        _this.power = 50;
         _this.lookDistance = 0;
         return _this;
     }

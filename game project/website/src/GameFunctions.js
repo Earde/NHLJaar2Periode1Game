@@ -12,7 +12,7 @@ var GameFunctions = (function () {
         creator.player.update();
         creator.weapon.shoot(creator, isMouseDown, delta, network);
         creator.player.sendToNetwork(network, delta, creator);
-        creator.text2D.update(creator.camera);
+        creator.text2D.update(creator.camera, keyMap[32]);
     };
     return GameFunctions;
 }());

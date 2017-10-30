@@ -1,7 +1,7 @@
 class Enemy extends MeshLoader {
     enemyID = -1;
     active = false;
-    health = 0;
+    health = 100;
     score = 0;
     oldPosition = new THREE.Vector2();
     newestPosition = new THREE.Vector2();
@@ -44,13 +44,10 @@ class Enemy extends MeshLoader {
         this.position.y = creator.heightmap.getHeightAt(this.position) + this.height / 2;
     }
 
-    forceUpdateFromNetwork(data) {
+    forceUpdateFromNetwork(data, creator) {
         this.active = true;
         this.enemyID = data.id;
-        this.position.set(data.posx, 0, data.posz);
-        this.rotation.set(data.dirx, data.diry, data.dirz);
-        this.health = data.health;
-        this.score = data.score;
+        this.position.set(creator.heightmap.width * data.percentagex - creator.heightmap.width / 2, 0, creator.heightmap.depth * data.percentagez - creator.heightmap.depth / 2);
     }
 
     updateFromNetwork(data) {

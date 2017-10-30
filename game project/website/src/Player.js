@@ -31,6 +31,7 @@ var Player = (function (_super) {
         var v = new THREE.Vector3(this.parent.getWorldPosition().x, this.parent.getWorldPosition().y + this.height, this.parent.getWorldPosition().z);
         this.parent.worldToLocal(v);
         this.lookAt(v); //dit moet nog gefixed worden, is nu vanuit camera perspectief en dit moet nog in wereld perspectief
+        this.rotateX(Math.PI / 2);
     };
     Player.prototype.updateScore = function (data, creator) {
         if (this.playerID == data.enemyid) {
@@ -40,7 +41,7 @@ var Player = (function (_super) {
     };
     Player.prototype.updateFromNetwork = function (creator, data) {
         this.playerID = data.id;
-        creator.camera.updateNetwork(new THREE.Vector3(data.posx, data.posy, data.posz), new THREE.Vector3(data.dirx, data.diry, data.dirz));
+        creator.camera.updateNetwork(new THREE.Vector2(creator.heightmap.width * data.percentagex - creator.heightmap.width / 2, creator.heightmap.depth * data.percentagez - creator.heightmap.depth / 2));
     };
     Player.prototype.sendToNetwork = function (network, delta, creator) {
         this.time += delta;

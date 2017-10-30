@@ -36,7 +36,8 @@
         this.weapon = new Weapon(0.1, 1, 0.1);
         this.weapon.load(this.camera);
 
-        this.crosshair = new Crosshair(0.02, 0.02, 1);
+        //0xAAFFAA = classic groene crosshair
+        this.crosshair = new Crosshair(0.01, 0.01, 1, 0xFF1111);
         this.crosshair.load(this.camera);
 
         let lightColor = 0xffffff;
@@ -61,7 +62,7 @@
             this.enemyBullets[i].load();
         }
 
-        this.text2D = new Text2D(100, 50, 35);
+        this.text2D = new Text2D(50, 25, 35);
         this.text2D.load(this.scene);
         this.text2D.createText("0");
 
