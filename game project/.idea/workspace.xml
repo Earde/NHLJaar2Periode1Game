@@ -13,32 +13,22 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Networking.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/src/Networking.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Heightmap.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/src/Heightmap.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="44" column="79" lean-forward="true" selection-start-line="44" selection-start-column="79" selection-end-line="44" selection-end-column="79" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SceneCreator.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/website/src/SceneCreator.ts">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Weapon.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/website/src/Weapon.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="425">
-              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SceneCreator.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/website/src/SceneCreator.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="643">
+              <caret line="83" column="13" lean-forward="true" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -58,7 +48,7 @@
     <findStrings>
       <find>size</find>
       <find>require</find>
-      <find>require</find>
+      <find>tga</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -69,24 +59,31 @@
         <option value="$PROJECT_DIR$/tsconfig.json" />
         <option value="$PROJECT_DIR$/website/typings/index.d.ts" />
         <option value="$PROJECT_DIR$/website/src/Networking.js" />
-        <option value="$PROJECT_DIR$/website/src/Bullet.ts" />
         <option value="$PROJECT_DIR$/website/src/Text.ts" />
         <option value="$PROJECT_DIR$/website/main.html" />
-        <option value="$PROJECT_DIR$/website/src/game.ts" />
-        <option value="$PROJECT_DIR$/website/src/Light.ts" />
-        <option value="$PROJECT_DIR$/website/src/Enemy.ts" />
-        <option value="$PROJECT_DIR$/website/src/Networking.ts" />
         <option value="$PROJECT_DIR$/website/src/Crosshair.ts" />
         <option value="$PROJECT_DIR$/website/src/Text2D.ts" />
-        <option value="$PROJECT_DIR$/website/src/GameFunctions.ts" />
-        <option value="$PROJECT_DIR$/website/src/Player.ts" />
-        <option value="$PROJECT_DIR$/website/src/Weapon.ts" />
-        <option value="$PROJECT_DIR$/website/src/EnemyBullet.ts" />
-        <option value="$PROJECT_DIR$/website/src/MeshLoader.ts" />
-        <option value="$PROJECT_DIR$/website/src/Camera.ts" />
         <option value="$PROJECT_DIR$/website/src/Skybox.ts" />
+        <option value="$PROJECT_DIR$/website/src/Networking.ts" />
+        <option value="$PROJECT_DIR$/website/src/Light.ts" />
+        <option value="$PROJECT_DIR$/website/src/PLight.ts" />
+        <option value="$PROJECT_DIR$/website/src/EnemyBullet.ts" />
+        <option value="$PROJECT_DIR$/website/src/GameFunctions.ts" />
         <option value="$PROJECT_DIR$/website/src/Heightmap.ts" />
+        <option value="$PROJECT_DIR$/website/ObjMtlLoader.ts" />
+        <option value="$PROJECT_DIR$/website/src/ObjMtlLoader.ts" />
+        <option value="$PROJECT_DIR$/website/src/Bullet.ts" />
+        <option value="$PROJECT_DIR$/website/index.html" />
+        <option value="$PROJECT_DIR$/website/src/game.ts" />
+        <option value="$PROJECT_DIR$/website/src/DirectLight.ts" />
+        <option value="$PROJECT_DIR$/website/src/ObjectLoader.ts" />
+        <option value="$PROJECT_DIR$/website/textures/enemy/stormtrooper.json" />
+        <option value="$PROJECT_DIR$/website/src/Camera.ts" />
+        <option value="$PROJECT_DIR$/website/src/MeshLoader.ts" />
+        <option value="$PROJECT_DIR$/website/src/Enemy.ts" />
+        <option value="$PROJECT_DIR$/website/src/Player.ts" />
         <option value="$PROJECT_DIR$/website/src/SceneCreator.ts" />
+        <option value="$PROJECT_DIR$/website/src/Weapon.ts" />
       </list>
     </option>
   </component>
@@ -148,20 +145,14 @@
               <item name="game project" type="b2602c69:ProjectViewProjectNode" />
               <item name="game project" type="462c0819:PsiDirectoryNode" />
               <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="textures" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="game project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="game project" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
               <item name="typings" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -174,8 +165,11 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\earde\Documents\Projects\gameprojectgit\game project\website\textures" />
+      <recent name="C:\Users\earde\Documents\Projects\gameprojectgit\game project\website\textures\enemy" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\earde\Documents\Projects\gameprojectgit\game project\website\textures" />
+      <recent name="C:\Users\earde\Documents\Projects\gameprojectgit\game project\website\src" />
       <recent name="C:\Users\earde\Documents\Projects\game project\website\src" />
       <recent name="C:\Users\earde\Documents\Projects\game project\website\textures" />
     </key>
@@ -192,13 +186,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.main.html">
-    <configuration name="main.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/game project/website/main.html" />
-    <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.main.html" />
-      </list>
-    </recent_temporary>
+  <component name="RunManager" selected="JavaScript Debug.index.html">
+    <configuration name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/game project/website/index.html" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -219,19 +208,25 @@
       <workItem from="1509196863186" duration="18348000" />
       <workItem from="1509284380863" duration="13132000" />
       <workItem from="1509303822251" duration="1448000" />
-      <workItem from="1509376293140" duration="14197000" />
+      <workItem from="1509376293140" duration="14267000" />
+      <workItem from="1509461505782" duration="1214000" />
+      <workItem from="1509467509431" duration="2474000" />
+      <workItem from="1509541923554" duration="18916000" />
+      <workItem from="1509645547124" duration="1651000" />
+      <workItem from="1509711922053" duration="17676000" />
+      <workItem from="1509804964364" duration="13474000" />
+      <workItem from="1509901320949" duration="2521000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126408000" />
+    <option name="totallyTimeSpent" value="184404000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11510417" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.116145834" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32804233" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -239,7 +234,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37883598" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37777779" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -271,8 +266,6 @@
         <option value="$PROJECT_DIR$/website/src/Player.js.map" />
         <option value="$PROJECT_DIR$/website/src/Crosshair.js.map" />
         <option value="$PROJECT_DIR$/website/src/Crosshair.js" />
-        <option value="$PROJECT_DIR$/website/src/Light.js.map" />
-        <option value="$PROJECT_DIR$/website/src/Light.js" />
         <option value="$PROJECT_DIR$/website/src/Weapon.js" />
         <option value="$PROJECT_DIR$/website/src/Weapon.js.map" />
         <option value="$PROJECT_DIR$/website/src/Networking.js" />
@@ -283,6 +276,10 @@
         <option value="$PROJECT_DIR$/website/src/EnemyBullet.js" />
         <option value="$PROJECT_DIR$/website/src/Text2D.js" />
         <option value="$PROJECT_DIR$/website/src/Text2D.js.map" />
+        <option value="$PROJECT_DIR$/website/src/PLight.js" />
+        <option value="$PROJECT_DIR$/website/src/PLight.js.map" />
+        <option value="$PROJECT_DIR$/website/src/ObjectLoader.js.map" />
+        <option value="$PROJECT_DIR$/website/src/ObjectLoader.js" />
       </list>
     </option>
   </component>
@@ -291,7 +288,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="82" />
+      <option name="time" value="164" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -305,79 +302,6 @@
     <select />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/website/src/SceneCreator.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/Light.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/game.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="76" column="31" lean-forward="false" selection-start-line="76" selection-start-column="31" selection-end-line="76" selection-end-column="31" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/Heightmap.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="50" column="53" lean-forward="true" selection-start-line="50" selection-start-column="53" selection-end-line="50" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/GameFunctions.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/Camera.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="27" lean-forward="true" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/Player.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/SceneCreator.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/src/Heightmap.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -386,11 +310,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/textures/heightmap.jpg" />
-    <entry file="file://$PROJECT_DIR$/website/textures/mountain.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/website/textures/mountain.jpg" />
     <entry file="file://$PROJECT_DIR$/bower_components/socket.io/lib/socket.js" />
     <entry file="file://$PROJECT_DIR$/bower_components/socket.io/test/socket.io.js" />
     <entry file="file://$PROJECT_DIR$/bower_components/socket.io/lib/index.js" />
@@ -410,7 +330,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1072">
           <caret line="6384" column="8" lean-forward="false" selection-start-line="6384" selection-start-column="8" selection-end-line="6384" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -453,94 +372,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/Bullet.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="36" lean-forward="false" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/Light.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/game.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1479">
-          <caret line="87" column="48" lean-forward="false" selection-start-line="87" selection-start-column="48" selection-end-line="87" selection-end-column="48" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/Crosshair.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="27" lean-forward="true" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/Text2D.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/Weapon.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="56" lean-forward="true" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/Player.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/Enemy.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="41" lean-forward="true" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/EnemyBullet.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="49" column="1" lean-forward="true" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/GameFunctions.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/textures/skybox-yneg.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -556,50 +387,180 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/Skybox.ts">
+    <entry file="file://$PROJECT_DIR$/website/src/Crosshair.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="35" lean-forward="true" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-          <folding />
+        <state relative-caret-position="119">
+          <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/Camera.ts">
+    <entry file="file://$PROJECT_DIR$/website/src/PLight.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/textures/AWP_Dragon_Lore.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7371930">
+          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/Heightmap.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="643">
+          <caret line="55" column="75" lean-forward="false" selection-start-line="55" selection-start-column="75" selection-end-line="55" selection-end-column="75" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/MeshLoader.ts">
+    <entry file="file://$PROJECT_DIR$/website/textures/model.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="36" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/ObjMtlLoader.ts" />
+    <entry file="file://$PROJECT_DIR$/website/src/ObjMtlLoader.js" />
+    <entry file="file://$PROJECT_DIR$/website/src/Text2D.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/Skybox.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="26" column="42" lean-forward="false" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/textures/enemy/russian-engineer-battlefield-3.json" />
+    <entry file="file://$PROJECT_DIR$/website/textures/enemy/Stormtrooper_D.tga">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/textures/enemy/stormtrooper.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="41" lean-forward="true" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/EnemyBullet.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="32" lean-forward="true" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/GameFunctions.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="70" lean-forward="false" selection-start-line="12" selection-start-column="70" selection-end-line="12" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/ObjectLoader.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/src/Networking.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+        <state relative-caret-position="374">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/Heightmap.ts">
+    <entry file="file://$PROJECT_DIR$/website/src/Camera.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" column="79" lean-forward="true" selection-start-line="44" selection-start-column="79" selection-end-line="44" selection-end-column="79" />
+        <state relative-caret-position="222">
+          <caret line="27" column="73" lean-forward="true" selection-start-line="27" selection-start-column="73" selection-end-line="27" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/Enemy.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="711">
+          <caret line="61" column="36" lean-forward="false" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/Bullet.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="33" lean-forward="true" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/Player.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="41" lean-forward="false" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/MeshLoader.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/game.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="32" column="27" lean-forward="false" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/DirectLight.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/src/SceneCreator.ts">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="643">
+          <caret line="83" column="13" lean-forward="true" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/Weapon.ts">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>

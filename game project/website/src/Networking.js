@@ -2,7 +2,7 @@ var Networking = (function () {
     //hier wordt de connectie met de server gemaakt
     function Networking(creator) {
         this.creator = creator;
-        this.socket = io('https://86.90.153.44:443', { secure: true, rejectUnauthorized: false });
+        this.socket = io('https://86.90.153.44', { secure: true, rejectUnauthorized: false, port: '443' });
     }
     Networking.prototype.updatePlayer = function (data) {
         this.creator.player.updateFromNetwork(this.creator, data);

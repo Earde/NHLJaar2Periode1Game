@@ -10,8 +10,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var Enemy = (function (_super) {
     __extends(Enemy, _super);
-    function Enemy(w, h) {
-        var _this = _super.call(this, new THREE.CylinderGeometry(w, w, h), new THREE.Material(), w, h, w) || this;
+    function Enemy() {
+        var _this = _super.call(this, new THREE.Geometry(), new THREE.Material(), 0, 0, 0) || this;
         _this.enemyID = -1;
         _this.active = false;
         _this.health = 100;
@@ -21,10 +21,12 @@ var Enemy = (function (_super) {
         _this.movementTime = 0;
         return _this;
     }
-    Enemy.prototype.load = function (scene) {
-        var material = this.createMaterial(true, THREE.DoubleSide, 1, 1, "textures/heightmap.png");
-        this.material = material;
-        _super.prototype.load.call(this, scene);
+    Enemy.prototype.loadObject = function (obj, scene, scale) {
+        _super.prototype.loadObject.call(this, obj, scene, scale);
+        this.position.set(0, 0, 0);
+        this.rotateX(-Math.PI / 2);
+        this.material.side = THREE.DoubleSide;
+        this.material.needsUpdate = true;
     };
     Enemy.prototype.reset = function () {
         this.active = false;
@@ -32,12 +34,14 @@ var Enemy = (function (_super) {
         this.enemyID = -1;
     };
     Enemy.prototype.update = function (delta, creator) {
-        if (this.active) {
-            this.visible = true;
-            this.move(delta, creator);
-        }
-        else {
-            this.visible = false;
+        if (this.loaded) {
+            if (this.active) {
+                this.visible = true;
+                this.move(delta, creator);
+            }
+            else {
+                this.visible = false;
+            }
         }
     };
     Enemy.prototype.move = function (delta, creator) {
@@ -48,7 +52,8 @@ var Enemy = (function (_super) {
         var lerp = new THREE.Vector2().lerpVectors(this.oldPosition, this.newestPosition, this.movementTime / creator.tickTime);
         this.position.x = lerp.x;
         this.position.z = lerp.y;
-        this.position.y = creator.heightmap.getHeightAt(this.position) + this.height / 2;
+        this.position.y = creator.heightmap.getHeightAt(this.position);
+        this.updateMatrixWorld(true);
     };
     Enemy.prototype.forceUpdateFromNetwork = function (data, creator) {
         this.active = true;
@@ -59,6 +64,7 @@ var Enemy = (function (_super) {
         this.active = true;
         this.oldPosition.set(this.newestPosition.x, this.newestPosition.y);
         this.newestPosition.set(data.posx, data.posz);
+        this.rotation.z = data.rotz;
         this.movementTime = 0;
         this.health = data.health;
         this.score = data.score;

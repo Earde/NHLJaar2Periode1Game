@@ -1,10 +1,6 @@
-﻿import MeshBasicMaterial = THREE.MeshBasicMaterial;
-import MeshPhongMaterial = THREE.MeshPhongMaterial;
-
-class Heightmap extends MeshLoader {
+﻿class Heightmap extends MeshLoader {
     constructor(w, h, d) {
         super(new THREE.PlaneGeometry(w, d), new THREE.Material(), w, h, d);
-        this.castShadow = false;
     }
 
     getHeightData(img) {
@@ -29,7 +25,7 @@ class Heightmap extends MeshLoader {
         let imageSuffix = ".png";
         img.onload = () => {
             //var material = this.createMaterial(true, THREE.BackSide, 1, 1, imagePrefix + imageName + imageSuffix);
-            var material = new MeshPhongMaterial();
+            var material = new THREE.MeshPhongMaterial();
             material.side = THREE.BackSide;
             material.vertexColors = THREE.VertexColors;
             material.wireframe = false;
@@ -46,11 +42,12 @@ class Heightmap extends MeshLoader {
                 for (let j = 0; j < sides; j++) {
                     let color = new THREE.Color(0xffffff);
                     let position = geometry.vertices[geometry.faces[i][indices[j]]];
-                    color.setRGB(0.7 + (Math.abs(position.x) / (this.width / 2)) * 0.3, 1.0 - (0.5 + (Math.abs(position.z) / (this.height / 2)) * 0.5), (Math.abs(position.y) / (this.depth / 2)) * 0.25);
+                    color.setRGB(0.5 + (Math.abs(position.x) / (this.width / 2)) * 0.4, 1.0 - (0.6 + (Math.abs(position.z) / (this.height / 2)) * 0.4), (Math.abs(position.y) / (this.depth / 2)) * 0.00);
                     geometry.faces[i].vertexColors[j] = color;
                 }
             }
             geometry.verticesNeedUpdate = true;
+            geometry.colorsNeedUpdate = true;
             geometry.computeFaceNormals();
             geometry.computeVertexNormals();
             this.geometry = geometry;

@@ -2,6 +2,7 @@ class MeshLoader extends THREE.Mesh {
     width: number;
     height: number;
     depth: number;
+    loaded = false;
 
     constructor(mesh, material, w, h, d) {
         super(mesh, material);
@@ -14,6 +15,24 @@ class MeshLoader extends THREE.Mesh {
 
     load(scene) {
         scene.add(this);
+        this.loaded = true;
+    }
+
+    loadObject(obj, scene, scale) {
+        let geometry: THREE.Geometry = obj.geometry.clone();
+        geometry.computeVertexNormals();
+        this.geometry = geometry.clone();
+        let box = new THREE.Box3().setFromObject(obj);
+        this.scale.set(scale.x, scale.y, scale.z);
+        this.width = (box.max.x - box.min.x) * this.scale.x;
+        this.height = (box.max.z - box.min.z) * this.scale.y;
+        this.depth = (box.max.y - box.min.y) * this.scale.z;
+        this.material = obj.material.clone();
+        this.material.side = THREE.DoubleSide;
+        this.material.needsUpdate = true;
+        this.castShadow = true;
+        this.receiveShadow = true;
+        this.load(scene);
     }
 
     createMaterial(phong, side, xSets, ySets, uri) {
@@ -26,7 +45,7 @@ class MeshLoader extends THREE.Mesh {
         let texture = new THREE.TextureLoader().load(uri);
         texture.wrapS = material.wrapT = THREE.RepeatWrapping;
         texture.repeat.set(xSets, ySets);
-        //texture.generateMipmaps = true;
+        texture.generateMipmaps = true;
         material.map = texture;
         material.side = side;
         material.needsUpdate = true;

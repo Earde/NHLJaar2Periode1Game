@@ -23,23 +23,17 @@ var EnemyBullet = (function (_super) {
             geometry.vertices.push(new THREE.Vector3(data.startx, data.starty, data.startz));
             geometry.vertices.push(new THREE.Vector3(data.endx, data.endy, data.endz));
             this.geometry = geometry;
+            this.geometry.computeFaceNormals();
+            this.geometry.computeVertexNormals(true);
             creator.scene.add(this);
             this.checkForHit(network, creator, data);
         }
     };
     EnemyBullet.prototype.checkForHit = function (network, creator, data) {
         var rayCaster = new THREE.Raycaster(new THREE.Vector3(data.startx, data.starty, data.startz), new THREE.Vector3(data.endx - data.startx, data.endy - data.starty, data.endz - data.startz).normalize());
-        creator.player.geometry.verticesNeedUpdate = true;
-        creator.player.geometry.normalsNeedUpdate = true;
-        creator.player.geometry.computeFaceNormals();
-        creator.player.geometry.computeVertexNormals();
-        creator.player.geometry.computeBoundingBox();
-        var ray = new THREE.Ray();
-        var inverseMatrix = new THREE.Matrix4();
-        inverseMatrix.getInverse(creator.player.matrixWorld);
-        ray.copy(rayCaster.ray).applyMatrix4(inverseMatrix);
-        if (ray.isIntersectionBox(creator.player.geometry.boundingBox)) {
-            creator.player.hit(data.power, network, this.enemyID);
+        var obj = rayCaster.intersectObject(creator.player);
+        if (obj.length > 0) {
+            creator.player.hit(data.power, network, this.enemyID, obj[0].point.y, creator);
         }
     };
     EnemyBullet.prototype.updateEnemyBullet = function (creator, delta) {

@@ -10,9 +10,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var Player = (function (_super) {
     __extends(Player, _super);
-    function Player(w, h) {
-        var _this = _super.call(this, new THREE.CylinderGeometry(w, w, h), new THREE.Material(), w, h, w) || this;
-        _this.speed = 10.0;
+    function Player() {
+        var _this = _super.call(this, new THREE.Geometry(), new THREE.MeshPhongMaterial(), 0, 0, 0) || this;
+        _this.speed = 100.0;
         _this.playerID = -1;
         _this.health = 100;
         _this.score = 0;
@@ -20,24 +20,31 @@ var Player = (function (_super) {
         _this.time = 0;
         return _this;
     }
-    Player.prototype.load = function (camera) {
-        var material = this.createMaterial(true, THREE.FrontSide, 1, 1, "textures/heightmap.png");
-        this.material = material;
-        this.position.set(0, 0, 0);
-        this.lookAt(new THREE.Vector3(0, 0, -1));
-        _super.prototype.load.call(this, camera);
+    Player.prototype.loadObject = function (obj, scene, scale) {
+        _super.prototype.loadObject.call(this, obj, scene, scale);
+        this.position.set(0, -this.height * 0.9, 0);
+        this.material.side = THREE.FrontSide;
+        this.material.transparent = true;
+        this.material.opacity = 0;
+        this.material.needsUpdate = true;
     };
     Player.prototype.update = function () {
-        var v = new THREE.Vector3(this.parent.getWorldPosition().x, this.parent.getWorldPosition().y + this.height, this.parent.getWorldPosition().z);
-        this.parent.worldToLocal(v);
-        this.lookAt(v); //dit moet nog gefixed worden, is nu vanuit camera perspectief en dit moet nog in wereld perspectief
-        this.rotateX(Math.PI / 2);
+        if (this.loaded) {
+            var v = new THREE.Vector3(this.parent.getWorldPosition().x, this.parent.getWorldPosition().y + this.height, this.parent.getWorldPosition().z);
+            this.parent.worldToLocal(v);
+            this.lookAt(v);
+            //this.rotateX(-Math.PI / 2);
+            this.updateMatrixWorld(true);
+        }
     };
     Player.prototype.updateScore = function (data, creator) {
         if (this.playerID == data.enemyid) {
             this.score++;
         } //killed player data.id
-        creator.text2D.createText(this.score.toString());
+        this.updateScoreText(creator);
+    };
+    Player.prototype.updateScoreText = function (creator) {
+        creator.text2D.createText("K: " + this.score.toString() + ' ' + "D: " + this.deaths.toString());
     };
     Player.prototype.updateFromNetwork = function (creator, data) {
         this.playerID = data.id;
@@ -48,27 +55,32 @@ var Player = (function (_super) {
         if (this.time > creator.tickTime) {
             this.time -= creator.tickTime;
             var data = {
-                posx: this.getWorldPosition().x,
-                posz: this.getWorldPosition().z,
+                posx: creator.camera.getWorldPosition().x,
+                posz: creator.camera.getWorldPosition().z,
+                rotz: creator.camera.getWorldRotation().z,
                 health: this.health,
                 score: this.score
             };
             network.sendData("playerData", data);
         }
     };
-    Player.prototype.hit = function (power, network, enemyID) {
+    Player.prototype.hit = function (power, network, enemyID, hitPoint, creator) {
+        if (hitPoint > this.parent.position.y + (this.height / 2) * 0.80) {
+            power *= 3;
+        }
         this.health -= power;
         if (this.health <= 0) {
             var dataResponse = {
                 enemyid: enemyID
             };
             network.sendData("kill", dataResponse);
-            this.revive(network);
+            this.revive(network, creator);
         }
     };
-    Player.prototype.revive = function (network) {
+    Player.prototype.revive = function (network, creator) {
         this.health = 100;
         this.deaths++;
+        this.updateScoreText(creator);
         var data = {
             deaths: this.deaths
         };

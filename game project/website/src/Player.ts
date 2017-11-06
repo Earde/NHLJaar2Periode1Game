@@ -1,5 +1,5 @@
 class Player extends MeshLoader {
-    speed = 10.0;
+    speed = 100.0;
     playerID = -1;
     health = 100;
     score = 0;
@@ -7,30 +7,38 @@ class Player extends MeshLoader {
 
     time = 0;
 
-    constructor(w, h) {
-        super(new THREE.CylinderGeometry(w, w, h), new THREE.Material(), w, h, w);
+    constructor() {
+        super(new THREE.Geometry(), new THREE.MeshPhongMaterial(), 0, 0, 0);
     }
 
-    load(camera: Camera) {
-        let material = this.createMaterial(true, THREE.FrontSide, 1, 1, "textures/heightmap.png");
-        this.material = material;
-        this.position.set(0, 0, 0);
-        this.lookAt(new THREE.Vector3(0, 0, -1));
-        super.load(camera);
+    loadObject(obj, scene, scale) {
+        super.loadObject(obj, scene, scale);
+        this.position.set(0, -this.height * 0.9, 0);
+        this.material.side = THREE.FrontSide;
+        this.material.transparent = true;
+        this.material.opacity = 0;
+        this.material.needsUpdate = true;
     }
 
     update() {
-        let v = new THREE.Vector3(this.parent.getWorldPosition().x, this.parent.getWorldPosition().y + this.height, this.parent.getWorldPosition().z);
-        this.parent.worldToLocal(v);
-        this.lookAt(v); //dit moet nog gefixed worden, is nu vanuit camera perspectief en dit moet nog in wereld perspectief
-        this.rotateX(Math.PI / 2);
+        if (this.loaded) {
+            let v = new THREE.Vector3(this.parent.getWorldPosition().x, this.parent.getWorldPosition().y + this.height, this.parent.getWorldPosition().z);
+            this.parent.worldToLocal(v);
+            this.lookAt(v);
+            //this.rotateX(-Math.PI / 2);
+            this.updateMatrixWorld(true);
+        }
     }
 
     updateScore(data, creator) {
         if (this.playerID == data.enemyid) {
             this.score++;
         } //killed player data.id
-        creator.text2D.createText(this.score.toString());
+        this.updateScoreText(creator);
+    }
+
+    updateScoreText(creator) {
+        creator.text2D.createText("K: " + this.score.toString() + ' ' + "D: " + this.deaths.toString());
     }
 
     updateFromNetwork(creator, data) {
@@ -43,8 +51,9 @@ class Player extends MeshLoader {
         if (this.time > creator.tickTime) {
             this.time -= creator.tickTime;
             let data = {
-                posx: this.getWorldPosition().x,
-                posz: this.getWorldPosition().z,
+                posx: creator.camera.getWorldPosition().x,
+                posz: creator.camera.getWorldPosition().z,
+                rotz: creator.camera.getWorldRotation().z,
                 health: this.health,
                 score: this.score
             };
@@ -52,20 +61,24 @@ class Player extends MeshLoader {
         }
     }
 
-    hit(power, network, enemyID) {
+    hit(power, network, enemyID, hitPoint, creator) {
+        if (hitPoint > this.parent.position.y + (this.height / 2) * 0.80) {
+            power *= 3;
+        }
         this.health -= power;
         if (this.health <= 0) {
             let dataResponse = {
                 enemyid: enemyID
             };
             network.sendData("kill", dataResponse);
-            this.revive(network);
+            this.revive(network, creator);
         }
     }
 
-    revive(network) {
+    revive(network, creator) {
         this.health = 100;
         this.deaths++;
+        this.updateScoreText(creator);
         let data = {
             deaths: this.deaths
         };

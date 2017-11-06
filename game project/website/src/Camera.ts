@@ -9,6 +9,8 @@
 
     constructor() {
         super(90, window.innerWidth / window.innerHeight, 0.1, 6000);
+        this.castShadow = true;
+        this.receiveShadow = true;
     }
 
     public update(delta, keyMap, mouseX, mouseY, creator) {
@@ -23,7 +25,7 @@
         if(keyMap[68]) { this.translateX(speed); }
 
         //set camera height based on heightmap
-        this.position.y = creator.heightmap.getHeightAt(this.position) + creator.player.height / 2;
+        this.position.y = creator.heightmap.getHeightAt(this.position) + creator.player.height * 0.9;
 
         //look movement
         this.lon += mouseX * delta * this.horizontalSpeed;

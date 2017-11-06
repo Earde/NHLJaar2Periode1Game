@@ -10,17 +10,28 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var Weapon = (function (_super) {
     __extends(Weapon, _super);
-    function Weapon(w, h, d) {
-        var _this = _super.call(this, new THREE.BoxGeometry(w, h, d), new THREE.Material(), w, h, d) || this;
+    function Weapon() {
+        var _this = _super.call(this, new THREE.Geometry(), new THREE.MeshPhongMaterial(), 0, 0, 0) || this;
         _this.shot = false;
-        _this.power = 50;
+        _this.power = 40;
         _this.lookDistance = 0;
         return _this;
     }
-    Weapon.prototype.load = function (camera) {
-        var material = this.createMaterial(true, THREE.DoubleSide, 1, 1, "textures/gun.jpg");
-        this.material = material;
-        _super.prototype.load.call(this, camera);
+    Weapon.prototype.loadObject = function (obj, scene, scale) {
+        var geometry = obj.geometry.clone();
+        geometry.computeVertexNormals();
+        this.geometry = geometry.clone();
+        var box = new THREE.Box3().setFromObject(obj);
+        this.scale.set(scale.x, scale.y, scale.z);
+        this.width = box.max.x * this.scale.x;
+        this.height = box.max.z * this.scale.y;
+        this.depth = box.max.y * this.scale.z;
+        this.material = obj.material.clone();
+        this.material.side = THREE.DoubleSide;
+        this.material.needsUpdate = true;
+        this.castShadow = true;
+        this.receiveShadow = true;
+        this.load(scene);
     };
     Weapon.prototype.update = function (distance) {
         //rotate weapon to where crosshair is looking
@@ -38,13 +49,14 @@ var Weapon = (function (_super) {
         }
         else if (isMouseDown && !this.shot) {
             //p1 = end of weapon position, p2 = crosshair point on map
-            creator.bullet.shoot(this.getWorldPosition().add(creator.camera.getWorldDirection().multiplyScalar(this.height / 2)), this.getWorldPosition().add(creator.camera.getWorldDirection().multiplyScalar(this.lookDistance)), network, this.power);
+            var endOfWeapon = this.getWorldPosition().add(creator.camera.getWorldDirection().multiplyScalar(this.depth));
+            creator.bullet.shoot(endOfWeapon.clone(), this.getWorldPosition().add(creator.camera.getWorldDirection().multiplyScalar(this.lookDistance)), network, this.power);
             creator.scene.add(creator.bullet);
             this.shot = true;
         }
     };
     Weapon.prototype.resize = function (width, height) {
-        this.position.set(width / 8, -height / 4, -this.height / 2);
+        this.position.set(width / 24, -(height / 10 * 4), 0);
     };
     return Weapon;
 }(MeshLoader));

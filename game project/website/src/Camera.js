@@ -18,6 +18,8 @@ var Camera = (function (_super) {
         _this.verticalMax = 89;
         _this.verticalSpeed = 5;
         _this.horizontalSpeed = 5;
+        _this.castShadow = true;
+        _this.receiveShadow = true;
         return _this;
     }
     Camera.prototype.update = function (delta, keyMap, mouseX, mouseY, creator) {
@@ -37,7 +39,7 @@ var Camera = (function (_super) {
             this.translateX(speed);
         }
         //set camera height based on heightmap
-        this.position.y = creator.heightmap.getHeightAt(this.position) + creator.player.height / 2;
+        this.position.y = creator.heightmap.getHeightAt(this.position) + creator.player.height * 0.9;
         //look movement
         this.lon += mouseX * delta * this.horizontalSpeed;
         this.lat -= mouseY * delta * this.verticalSpeed;

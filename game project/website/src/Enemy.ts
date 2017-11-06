@@ -8,14 +8,16 @@ class Enemy extends MeshLoader {
 
     movementTime = 0;
 
-    constructor(w, h) {
-        super(new THREE.CylinderGeometry(w, w, h), new THREE.Material(), w, h, w);
+    constructor() {
+        super(new THREE.Geometry(), new THREE.Material(), 0, 0, 0);
     }
 
-    load(scene) {
-        let material = this.createMaterial(true, THREE.DoubleSide, 1, 1, "textures/heightmap.png");
-        this.material = material;
-        super.load(scene);
+    loadObject(obj, scene, scale) {
+        super.loadObject(obj, scene, scale);
+        this.position.set(0, 0, 0);
+        this.rotateX(-Math.PI / 2);
+        this.material.side = THREE.DoubleSide;
+        this.material.needsUpdate = true;
     }
 
     reset() {
@@ -25,11 +27,13 @@ class Enemy extends MeshLoader {
     }
 
     update(delta, creator) {
-        if (this.active) {
-            this.visible = true;
-            this.move(delta, creator);
-        } else {
-            this.visible = false;
+        if (this.loaded) {
+            if (this.active) {
+                this.visible = true;
+                this.move(delta, creator);
+            } else {
+                this.visible = false;
+            }
         }
     }
 
@@ -41,7 +45,8 @@ class Enemy extends MeshLoader {
         let lerp = new THREE.Vector2().lerpVectors(this.oldPosition, this.newestPosition, this.movementTime / creator.tickTime);
         this.position.x = lerp.x;
         this.position.z = lerp.y;
-        this.position.y = creator.heightmap.getHeightAt(this.position) + this.height / 2;
+        this.position.y = creator.heightmap.getHeightAt(this.position);
+        this.updateMatrixWorld(true);
     }
 
     forceUpdateFromNetwork(data, creator) {
@@ -54,6 +59,7 @@ class Enemy extends MeshLoader {
         this.active = true;
         this.oldPosition.set(this.newestPosition.x, this.newestPosition.y);
         this.newestPosition.set(data.posx, data.posz);
+        this.rotation.z = data.rotz;
         this.movementTime = 0;
         this.health = data.health;
         this.score = data.score;

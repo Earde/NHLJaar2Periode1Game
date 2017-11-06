@@ -1,17 +1,27 @@
 class Weapon extends MeshLoader {
     shot = false;
-    power = 50;
-
+    power = 40;
     lookDistance = 0;
 
-    constructor(w, h, d) {
-        super(new THREE.BoxGeometry(w, h, d), new THREE.Material(), w, h, d);
+    constructor() {
+        super(new THREE.Geometry(), new THREE.MeshPhongMaterial(), 0, 0, 0);
     }
 
-    load(camera: Camera) {
-        let material = this.createMaterial(true, THREE.DoubleSide, 1, 1, "textures/gun.jpg");
-        this.material = material;
-        super.load(camera);
+    loadObject(obj, scene, scale) {
+        let geometry: THREE.Geometry = obj.geometry.clone();
+        geometry.computeVertexNormals();
+        this.geometry = geometry.clone();
+        let box = new THREE.Box3().setFromObject(obj);
+        this.scale.set(scale.x, scale.y, scale.z);
+        this.width = box.max.x * this.scale.x;
+        this.height = box.max.z * this.scale.y;
+        this.depth = box.max.y * this.scale.z;
+        this.material = obj.material.clone();
+        this.material.side = THREE.DoubleSide;
+        this.material.needsUpdate = true;
+        this.castShadow = true;
+        this.receiveShadow = true;
+        this.load(scene);
     }
 
     update(distance) {
@@ -30,7 +40,8 @@ class Weapon extends MeshLoader {
             }
         } else if (isMouseDown && !this.shot) {
             //p1 = end of weapon position, p2 = crosshair point on map
-            creator.bullet.shoot(this.getWorldPosition().add(creator.camera.getWorldDirection().multiplyScalar(this.height / 2)),
+            let endOfWeapon = this.getWorldPosition().add(creator.camera.getWorldDirection().multiplyScalar(this.depth));
+            creator.bullet.shoot(endOfWeapon.clone(),
                 this.getWorldPosition().add(creator.camera.getWorldDirection().multiplyScalar(this.lookDistance)),
                 network, this.power);
             creator.scene.add(creator.bullet);
@@ -39,6 +50,6 @@ class Weapon extends MeshLoader {
     }
 
     resize(width, height) {
-        this.position.set(width / 8, -height / 4, -this.height / 2);
+        this.position.set(width / 24, -(height / 10 * 4), 0);
     }
 }

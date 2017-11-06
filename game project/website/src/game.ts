@@ -9,9 +9,11 @@
 ///<reference path="Weapon.ts" />
 ///<reference path="Bullet.ts" />
 ///<reference path="EnemyBullet.ts" />
-///<reference path="Light.ts" />
+///<reference path="PLight.ts" />
+///<reference path="DirectLight.ts" />
 ///<reference path="Enemy.ts" />
 ///<reference path="Text2D.ts" />
+///<reference path="ObjectLoader.ts" />
 ///<reference path="GameFunctions.ts" />
 
 //Three.js init
@@ -27,6 +29,8 @@ document.body.appendChild( renderer.domElement );
 //create meshes + light
 let creator = new SceneCreator(scene);
 creator.load();
+let objectLoader = new ObjectLoader();
+objectLoader.loadObjectFiles(creator);
 
 //on window resize
 window.addEventListener('resize', onWindowResize, false);
