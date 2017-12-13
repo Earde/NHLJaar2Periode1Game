@@ -2,6 +2,7 @@ class MeshLoader extends THREE.Mesh {
     width: number;
     height: number;
     depth: number;
+    middleOfObject: THREE.Vector3;
     loaded = false;
 
     constructor(mesh, material, w, h, d) {
@@ -27,6 +28,7 @@ class MeshLoader extends THREE.Mesh {
         this.width = (box.max.x - box.min.x) * this.scale.x;
         this.height = (box.max.z - box.min.z) * this.scale.y;
         this.depth = (box.max.y - box.min.y) * this.scale.z;
+        this.middleOfObject = new THREE.Vector3((box.max.x + box.min.x) / 2 * this.scale.x, (box.max.y + box.min.y) / 2 * this.scale.y, (box.max.z + box.min.z) / 2 * this.scale.z);
         this.material = obj.material.clone();
         this.material.side = THREE.DoubleSide;
         this.material.needsUpdate = true;

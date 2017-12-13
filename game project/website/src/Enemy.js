@@ -18,6 +18,8 @@ var Enemy = (function (_super) {
         _this.score = 0;
         _this.oldPosition = new THREE.Vector2();
         _this.newestPosition = new THREE.Vector2();
+        _this.oldTheta = 0;
+        _this.newTheta = 0;
         _this.movementTime = 0;
         return _this;
     }
@@ -53,6 +55,9 @@ var Enemy = (function (_super) {
         this.position.x = lerp.x;
         this.position.z = lerp.y;
         this.position.y = creator.heightmap.getHeightAt(this.position);
+        var theta = this.oldTheta + (this.newTheta - this.oldTheta) * (this.movementTime / creator.tickTime);
+        this.lookAt(new THREE.Vector3(this.position.x + Math.cos(theta) * 5, this.position.y, this.position.z + Math.sin(theta) * 5));
+        this.rotateX(-Math.PI / 2);
         this.updateMatrixWorld(true);
     };
     Enemy.prototype.forceUpdateFromNetwork = function (data, creator) {
@@ -64,7 +69,8 @@ var Enemy = (function (_super) {
         this.active = true;
         this.oldPosition.set(this.newestPosition.x, this.newestPosition.y);
         this.newestPosition.set(data.posx, data.posz);
-        this.rotation.z = data.rotz;
+        this.oldTheta = this.newTheta;
+        this.newTheta = data.longitude * Math.PI / 180;
         this.movementTime = 0;
         this.health = data.health;
         this.score = data.score;

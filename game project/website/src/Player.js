@@ -57,7 +57,7 @@ var Player = (function (_super) {
             var data = {
                 posx: creator.camera.getWorldPosition().x,
                 posz: creator.camera.getWorldPosition().z,
-                rotz: creator.camera.getWorldRotation().z,
+                longitude: creator.camera.lon,
                 health: this.health,
                 score: this.score
             };

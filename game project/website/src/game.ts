@@ -29,6 +29,8 @@ document.body.appendChild( renderer.domElement );
 //create meshes + light
 let creator = new SceneCreator(scene);
 creator.load();
+
+//load object files
 let objectLoader = new ObjectLoader();
 objectLoader.loadObjectFiles(creator);
 

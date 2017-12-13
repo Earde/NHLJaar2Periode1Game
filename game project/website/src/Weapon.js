@@ -17,22 +17,6 @@ var Weapon = (function (_super) {
         _this.lookDistance = 0;
         return _this;
     }
-    Weapon.prototype.loadObject = function (obj, scene, scale) {
-        var geometry = obj.geometry.clone();
-        geometry.computeVertexNormals();
-        this.geometry = geometry.clone();
-        var box = new THREE.Box3().setFromObject(obj);
-        this.scale.set(scale.x, scale.y, scale.z);
-        this.width = box.max.x * this.scale.x;
-        this.height = box.max.z * this.scale.y;
-        this.depth = box.max.y * this.scale.z;
-        this.material = obj.material.clone();
-        this.material.side = THREE.DoubleSide;
-        this.material.needsUpdate = true;
-        this.castShadow = true;
-        this.receiveShadow = true;
-        this.load(scene);
-    };
     Weapon.prototype.update = function (distance) {
         //rotate weapon to where crosshair is looking
         this.lookAt(new THREE.Vector3(0, 0, -distance));
@@ -48,8 +32,9 @@ var Weapon = (function (_super) {
             }
         }
         else if (isMouseDown && !this.shot) {
-            //p1 = end of weapon position, p2 = crosshair point on map
-            var endOfWeapon = this.getWorldPosition().add(creator.camera.getWorldDirection().multiplyScalar(this.depth));
+            var middleOfWeapon = this.getWorldPosition().add(new THREE.Vector3(this.middleOfObject.x * this.rotation.x, this.middleOfObject.y * this.rotation.y, this.middleOfObject.z * this.rotation.z));
+            var endOfWeapon = middleOfWeapon.add(creator.camera.getWorldDirection().multiplyScalar(this.depth / 2));
+            //p1 = end of weapon position, p2 = crosshair position on heightmap
             creator.bullet.shoot(endOfWeapon.clone(), this.getWorldPosition().add(creator.camera.getWorldDirection().multiplyScalar(this.lookDistance)), network, this.power);
             creator.scene.add(creator.bullet);
             this.shot = true;

@@ -23,23 +23,6 @@ var Camera = (function (_super) {
         return _this;
     }
     Camera.prototype.update = function (delta, keyMap, mouseX, mouseY, creator) {
-        //movement
-        var speed = creator.player.speed * delta;
-        //move in camera direction (if you look up or down you won't move backward or forward)
-        if (keyMap[87]) {
-            this.translateZ(-speed);
-        }
-        if (keyMap[83]) {
-            this.translateZ(speed);
-        }
-        if (keyMap[65]) {
-            this.translateX(-speed);
-        }
-        if (keyMap[68]) {
-            this.translateX(speed);
-        }
-        //set camera height based on heightmap
-        this.position.y = creator.heightmap.getHeightAt(this.position) + creator.player.height * 0.9;
         //look movement
         this.lon += mouseX * delta * this.horizontalSpeed;
         this.lat -= mouseY * delta * this.verticalSpeed;
@@ -56,6 +39,26 @@ var Camera = (function (_super) {
         target.y = this.position.y + 100 * Math.cos(phi);
         target.z = this.position.z + 100 * Math.sin(phi) * Math.sin(theta);
         this.lookAt(target);
+        //movement
+        var speed = creator.player.speed * delta;
+        if (keyMap[87]) {
+            this.position.z += Math.sin(theta) * speed;
+            this.position.x += Math.cos(theta) * speed;
+        }
+        else if (keyMap[83]) {
+            this.position.z -= Math.sin(theta) * speed;
+            this.position.x -= Math.cos(theta) * speed;
+        }
+        if (keyMap[65]) {
+            this.position.z += Math.sin(theta - Math.PI / 2) * speed;
+            this.position.x += Math.cos(theta - Math.PI / 2) * speed;
+        }
+        else if (keyMap[68]) {
+            this.position.z += Math.sin(theta + Math.PI / 2) * speed;
+            this.position.x += Math.cos(theta + Math.PI / 2) * speed;
+        }
+        //set camera height based on heightmap
+        this.position.y = creator.heightmap.getHeightAt(this.position) + creator.player.height * 0.9;
         for (var i = 0; i < this.children.length; i++) {
             if (this.children[i] instanceof Weapon) {
                 var weapon = this.children[i];
