@@ -1,4 +1,4 @@
-var GameFunctions = (function () {
+var GameFunctions = /** @class */ (function () {
     function GameFunctions() {
     }
     GameFunctions.prototype.update = function (creator, network, delta, keyMap, mouseX, mouseY, isMouseDown) {
@@ -12,7 +12,7 @@ var GameFunctions = (function () {
         creator.player.update();
         creator.weapon.shoot(creator, isMouseDown, delta, network);
         creator.player.sendToNetwork(network, delta, creator);
-        creator.text2D.update(creator.camera, keyMap[32]);
+        creator.text2D.update(creator.camera, keyMap[81]);
     };
     return GameFunctions;
 }());

@@ -5,7 +5,7 @@ class ObjectLoader {
 
     loadObjectFiles = async(creator) => {
         let loader = new THREE.ObjectLoader();
-        loader.load("textures/awp.json", function(obj) {
+        loader.load("textures/weapon/sniper-rifle.json", function(obj) {
             creator.models[0] = obj.children[0].children[0].clone();
             creator.loadModels(0);
         });

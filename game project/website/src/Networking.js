@@ -1,4 +1,4 @@
-var Networking = (function () {
+var Networking = /** @class */ (function () {
     //hier wordt de connectie met de server gemaakt
     function Networking(creator) {
         this.creator = creator;

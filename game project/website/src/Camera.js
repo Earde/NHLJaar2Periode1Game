@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Camera = (function (_super) {
+var Camera = /** @class */ (function (_super) {
     __extends(Camera, _super);
     function Camera() {
         var _this = _super.call(this, 90, window.innerWidth / window.innerHeight, 0.1, 6000) || this;
@@ -16,8 +16,8 @@ var Camera = (function (_super) {
         _this.lat = 0;
         _this.verticalMin = -89;
         _this.verticalMax = 89;
-        _this.verticalSpeed = 5;
-        _this.horizontalSpeed = 5;
+        _this.verticalSpeed = 3;
+        _this.horizontalSpeed = 3;
         _this.castShadow = true;
         _this.receiveShadow = true;
         return _this;

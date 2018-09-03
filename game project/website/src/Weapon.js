@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Weapon = (function (_super) {
+var Weapon = /** @class */ (function (_super) {
     __extends(Weapon, _super);
     function Weapon() {
         var _this = _super.call(this, new THREE.Geometry(), new THREE.MeshPhongMaterial(), 0, 0, 0) || this;
@@ -20,9 +20,9 @@ var Weapon = (function (_super) {
     Weapon.prototype.update = function (distance) {
         //rotate weapon to where crosshair is looking
         this.lookAt(new THREE.Vector3(0, 0, -distance));
-        this.rotateX(Math.PI / 2);
+        this.rotateX(-Math.PI / 2);
         this.lookDistance = distance;
-        this.updateMatrix();
+        //this.updateMatrix();
     };
     Weapon.prototype.shoot = function (creator, isMouseDown, delta, network) {
         if (this.shot) {
@@ -32,8 +32,9 @@ var Weapon = (function (_super) {
             }
         }
         else if (isMouseDown && !this.shot) {
-            var middleOfWeapon = this.getWorldPosition().add(new THREE.Vector3(this.middleOfObject.x * this.rotation.x, this.middleOfObject.y * this.rotation.y, this.middleOfObject.z * this.rotation.z));
-            var endOfWeapon = middleOfWeapon.add(creator.camera.getWorldDirection().multiplyScalar(this.depth / 2));
+            //let middleOfWeapon = this.getWorldPosition().add(new THREE.Vector3(this.middleOfObject.x * this.rotation.x, this.middleOfObject.y * this.rotation.y, this.middleOfObject.z * this.rotation.z));
+            //let endOfWeapon = middleOfWeapon.add(creator.camera.getWorldDirection().multiplyScalar(this.depth / 2));
+            var endOfWeapon = this.getWorldPosition().clone();
             //p1 = end of weapon position, p2 = crosshair position on heightmap
             creator.bullet.shoot(endOfWeapon.clone(), this.getWorldPosition().add(creator.camera.getWorldDirection().multiplyScalar(this.lookDistance)), network, this.power);
             creator.scene.add(creator.bullet);
@@ -41,7 +42,7 @@ var Weapon = (function (_super) {
         }
     };
     Weapon.prototype.resize = function (width, height) {
-        this.position.set(width / 24, -(height / 10 * 4), 0);
+        this.position.set(width / 16, -(height / 10 * 4), -1);
     };
     return Weapon;
 }(MeshLoader));

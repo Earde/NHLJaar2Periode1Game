@@ -1,5 +1,5 @@
 class Player extends MeshLoader {
-    speed = 100.0;
+    speed = 25.0;
     playerID = -1;
     health = 100;
     score = 0;

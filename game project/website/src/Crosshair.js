@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Crosshair = (function (_super) {
+var Crosshair = /** @class */ (function (_super) {
     __extends(Crosshair, _super);
     function Crosshair(w, h, d, color) {
         var _this = _super.call(this, new THREE.BoxGeometry(w, h, 0.01), new THREE.Material(), w, h, d) || this;

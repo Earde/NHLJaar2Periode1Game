@@ -20,8 +20,8 @@
 
     load(scene) {
         let img = new Image();
-        let imagePrefix = "textures/";
-        let imageName = "heightmap1";
+        let imagePrefix = "textures/heightmap/";
+        let imageName = "heightmap5";
         let imageSuffix = ".png";
         img.onload = () => {
             //var material = this.createMaterial(true, THREE.BackSide, 1, 1, imagePrefix + imageName + imageSuffix);

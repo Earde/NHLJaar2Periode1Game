@@ -18,7 +18,7 @@ class Bullet extends THREE.Line {
         } ); //linewidth & lights werken niet op windows ;(
         */
         let material = new MeshLoader(new THREE.Geometry(), new THREE.Material(), 0, 0, 0)
-            .createMaterial(true, THREE.DoubleSide, 1, 1, "textures/smoke.jpg");
+            .createMaterial(true, THREE.DoubleSide, 1, 1, "textures/bullet/smoke.jpg");
         this.material = material;
         this.material.opacity = 0;
         this.material.transparent = true;

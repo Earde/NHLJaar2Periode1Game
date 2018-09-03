@@ -33,14 +33,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var ObjectLoader = (function () {
+var ObjectLoader = /** @class */ (function () {
     function ObjectLoader() {
         var _this = this;
         this.loadObjectFiles = function (creator) { return __awaiter(_this, void 0, void 0, function () {
             var loader;
             return __generator(this, function (_a) {
                 loader = new THREE.ObjectLoader();
-                loader.load("textures/awp.json", function (obj) {
+                loader.load("textures/weapon/sniper-rifle.json", function (obj) {
                     creator.models[0] = obj.children[0].children[0].clone();
                     creator.loadModels(0);
                 });

@@ -4,8 +4,8 @@
     verticalMin = -89;
     verticalMax = 89;
 
-    verticalSpeed = 5;
-    horizontalSpeed = 5;
+    verticalSpeed = 3;
+    horizontalSpeed = 3;
 
     constructor() {
         super(90, window.innerWidth / window.innerHeight, 0.1, 6000);

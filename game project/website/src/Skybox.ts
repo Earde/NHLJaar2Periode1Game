@@ -6,7 +6,7 @@
     }
 
     load(scene) {
-        let imagePrefix = "textures/skybox-";
+        let imagePrefix = "textures/skybox/skybox-";
         let directions = ["xpos", "xneg", "ypos", "yneg", "zpos", "zneg"];
         let imageSuffix = ".jpg";
         let materialArray = [];

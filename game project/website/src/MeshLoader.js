@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var MeshLoader = (function (_super) {
+var MeshLoader = /** @class */ (function (_super) {
     __extends(MeshLoader, _super);
     function MeshLoader(mesh, material, w, h, d) {
         var _this = _super.call(this, mesh, material) || this;

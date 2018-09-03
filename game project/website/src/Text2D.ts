@@ -8,14 +8,15 @@ class Text2D extends THREE.Sprite {
         this.width = w;
         this.height = h;
         this.depth = d;
+        this.createText("K: 0 D: 0");
     }
 
     load(scene) {
         scene.add(this);
     }
 
-    update(camera: Camera, spacePressed) {
-        if (spacePressed) {
+    update(camera: Camera, buttonPressed) {
+        if (buttonPressed) {
             let target = camera.getWorldPosition().add(camera.getWorldDirection().multiplyScalar(this.depth));
             this.position.set(target.x, target.y, target.z);
             this.visible = true;

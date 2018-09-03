@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Bullet = (function (_super) {
+var Bullet = /** @class */ (function (_super) {
     __extends(Bullet, _super);
     function Bullet() {
         var _this = _super.call(this, new THREE.Geometry(), new THREE.LineBasicMaterial()) || this;
@@ -28,7 +28,7 @@ var Bullet = (function (_super) {
         } ); //linewidth & lights werken niet op windows ;(
         */
         var material = new MeshLoader(new THREE.Geometry(), new THREE.Material(), 0, 0, 0)
-            .createMaterial(true, THREE.DoubleSide, 1, 1, "textures/smoke.jpg");
+            .createMaterial(true, THREE.DoubleSide, 1, 1, "textures/bullet/smoke.jpg");
         this.material = material;
         this.material.opacity = 0;
         this.material.transparent = true;

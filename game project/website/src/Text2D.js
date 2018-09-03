@@ -8,20 +8,21 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Text2D = (function (_super) {
+var Text2D = /** @class */ (function (_super) {
     __extends(Text2D, _super);
     function Text2D(w, h, d) {
         var _this = _super.call(this, new THREE.SpriteMaterial()) || this;
         _this.width = w;
         _this.height = h;
         _this.depth = d;
+        _this.createText("K: 0 D: 0");
         return _this;
     }
     Text2D.prototype.load = function (scene) {
         scene.add(this);
     };
-    Text2D.prototype.update = function (camera, spacePressed) {
-        if (spacePressed) {
+    Text2D.prototype.update = function (camera, buttonPressed) {
+        if (buttonPressed) {
             var target = camera.getWorldPosition().add(camera.getWorldDirection().multiplyScalar(this.depth));
             this.position.set(target.x, target.y, target.z);
             this.visible = true;

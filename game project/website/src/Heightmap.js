@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Heightmap = (function (_super) {
+var Heightmap = /** @class */ (function (_super) {
     __extends(Heightmap, _super);
     function Heightmap(w, h, d) {
         return _super.call(this, new THREE.PlaneGeometry(w, d), new THREE.Material(), w, h, d) || this;
@@ -30,8 +30,8 @@ var Heightmap = (function (_super) {
     Heightmap.prototype.load = function (scene) {
         var _this = this;
         var img = new Image();
-        var imagePrefix = "textures/";
-        var imageName = "heightmap1";
+        var imagePrefix = "textures/heightmap/";
+        var imageName = "heightmap5";
         var imageSuffix = ".png";
         img.onload = function () {
             //var material = this.createMaterial(true, THREE.BackSide, 1, 1, imagePrefix + imageName + imageSuffix);

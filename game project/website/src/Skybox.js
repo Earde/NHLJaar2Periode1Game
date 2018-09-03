@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Skybox = (function (_super) {
+var Skybox = /** @class */ (function (_super) {
     __extends(Skybox, _super);
     function Skybox(w, h, d) {
         var _this = _super.call(this, new THREE.BoxGeometry(w, h, d), new THREE.MeshBasicMaterial(), w, h, d) || this;
@@ -17,7 +17,7 @@ var Skybox = (function (_super) {
         return _this;
     }
     Skybox.prototype.load = function (scene) {
-        var imagePrefix = "textures/skybox-";
+        var imagePrefix = "textures/skybox/skybox-";
         var directions = ["xpos", "xneg", "ypos", "yneg", "zpos", "zneg"];
         var imageSuffix = ".jpg";
         var materialArray = [];

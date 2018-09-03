@@ -33,7 +33,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var SceneCreator = (function () {
+var SceneCreator = /** @class */ (function () {
     function SceneCreator(s) {
         var _this = this;
         this.tickTime = 0.02;
@@ -44,7 +44,7 @@ var SceneCreator = (function () {
                     case 0:
                         this.models = [];
                         this.skybox = new Skybox(3000, 3000, 3000);
-                        this.heightmap = new Heightmap(750, 50, 750);
+                        this.heightmap = new Heightmap(750, 52, 750);
                         this.camera = new Camera();
                         this.player = new Player();
                         //0xAAFFAA = classic groene crosshair
@@ -62,7 +62,7 @@ var SceneCreator = (function () {
                             this.enemies.push(new Enemy());
                             this.enemyBullets.push(new EnemyBullet());
                         }
-                        this.text2D = new Text2D(50, 25, 35);
+                        this.text2D = new Text2D(50, 25, 100);
                         this.text2D.createText("0");
                         this.weapon = new Weapon();
                         this.bullet = new Bullet();
@@ -91,7 +91,7 @@ var SceneCreator = (function () {
     }
     SceneCreator.prototype.loadModels = function (n) {
         if (n == 0) {
-            this.weapon.loadObject(this.models[n], this.camera, new THREE.Vector3(0.06, 0.06, 0.06));
+            this.weapon.loadObject(this.models[n], this.camera, new THREE.Vector3(0.6, 0.6, 0.6));
             this.camera.resizeChildren();
         }
         else if (n == 1) {
