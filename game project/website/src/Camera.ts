@@ -13,6 +13,7 @@
         this.receiveShadow = true;
     }
 
+    //update camera based on mouse movement and wasd keys
     public update(delta, keyMap, mouseX, mouseY, creator) {
         //look movement
         this.lon += mouseX * delta * this.horizontalSpeed;
@@ -67,12 +68,14 @@
         this.updateMatrix();
     }
 
+    //browser window resized
     public windowResize() {
         this.aspect = window.innerWidth / window.innerHeight;
         this.updateProjectionMatrix();
         this.resizeChildren();
     }
 
+    //resize all models when window is resized
     public resizeChildren() {
         var fovRadians = THREE.Math.degToRad(this.fov);
         var cameraHeight = 2 * Math.tan(fovRadians / 2);
@@ -85,6 +88,7 @@
         }
     }
 
+    //send data to server
     public updateNetwork(pos) {
         this.position.set(pos.x, 0, pos.y);
     }

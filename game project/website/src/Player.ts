@@ -11,6 +11,7 @@ class Player extends MeshLoader {
         super(new THREE.Geometry(), new THREE.MeshPhongMaterial(), 0, 0, 0);
     }
 
+    //load mesh object
     loadObject(obj, scene, scale) {
         super.loadObject(obj, scene, scale);
         this.position.set(0, -this.height * 0.9, 0);
@@ -20,6 +21,7 @@ class Player extends MeshLoader {
         this.material.needsUpdate = true;
     }
 
+    //update position based on camera
     update() {
         if (this.loaded) {
             let v = new THREE.Vector3(this.parent.getWorldPosition().x, this.parent.getWorldPosition().y + this.height, this.parent.getWorldPosition().z);
@@ -30,6 +32,7 @@ class Player extends MeshLoader {
         }
     }
 
+    //update score if player killed enemy
     updateScore(data, creator) {
         if (this.playerID == data.enemyid) {
             this.score++;
@@ -37,15 +40,18 @@ class Player extends MeshLoader {
         this.updateScoreText(creator);
     }
 
+    //update Kill/Death text
     updateScoreText(creator) {
         creator.text2D.createText("K: " + this.score.toString() + ' ' + "D: " + this.deaths.toString());
     }
 
+    //new position from server (after death or new connection)
     updateFromNetwork(creator, data) {
         this.playerID = data.id;
         creator.camera.updateNetwork(new THREE.Vector2(creator.heightmap.width * data.percentagex - creator.heightmap.width / 2, creator.heightmap.depth * data.percentagez - creator.heightmap.depth / 2));
     }
 
+    //send data to network tick based
     sendToNetwork(network: Networking, delta, creator) {
         this.time += delta;
         if (this.time > creator.tickTime) {
@@ -61,11 +67,14 @@ class Player extends MeshLoader {
         }
     }
 
+    //player is hit by enemy bullet
     hit(power, network, enemyID, hitPoint, creator) {
+        //headshot
         if (hitPoint > this.parent.position.y + (this.height / 2) * 0.80) {
             power *= 3;
         }
         this.health -= power;
+        //death
         if (this.health <= 0) {
             let dataResponse = {
                 enemyid: enemyID
@@ -75,6 +84,7 @@ class Player extends MeshLoader {
         }
     }
 
+    //send to server to revive player
     revive(network, creator) {
         this.health = 100;
         this.deaths++;

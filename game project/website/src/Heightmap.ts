@@ -3,6 +3,7 @@
         super(new THREE.PlaneGeometry(w, d), new THREE.Material(), w, h, d);
     }
 
+    //convert each heightmap pixel to single number data
     getHeightData(img) {
         let canvas = document.createElement( 'canvas' );
         canvas.width = img.width;
@@ -18,6 +19,7 @@
         return data;
     }
 
+    //load heightmap
     load(scene) {
         let img = new Image();
         let imagePrefix = "textures/heightmap/";
@@ -60,6 +62,7 @@
         img.src = imagePrefix + imageName + imageSuffix;
     }
 
+    //get y height at player x,z position
     getHeightAt(pos: THREE.Vector3) {
         let ray = new THREE.Raycaster(new THREE.Vector3(pos.x, this.height + 1, pos.z), new THREE.Vector3(0, -1, 0));
         let obj = ray.intersectObject(this);

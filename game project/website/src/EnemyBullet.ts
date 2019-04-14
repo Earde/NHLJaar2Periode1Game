@@ -6,6 +6,7 @@ class EnemyBullet extends Bullet {
         super();
     }
 
+    //check for new bullet and link to enemy who shot
     updateFromNetwork(network, creator, data) {
         if (this.enemyID == data.id) {
             this.active = true;
@@ -20,6 +21,7 @@ class EnemyBullet extends Bullet {
         }
     }
 
+    //check if enemy bullet hits player
     checkForHit(network, creator, data) {
         let rayCaster = new THREE.Raycaster(new THREE.Vector3(data.startx, data.starty, data.startz),
             new THREE.Vector3(data.endx - data.startx, data.endy - data.starty, data.endz - data.startz).normalize());
@@ -29,6 +31,7 @@ class EnemyBullet extends Bullet {
         }
     }
 
+    //check if bullet is alive and update mesh
     updateEnemyBullet(creator, delta) {
         if (this.active) {
             if (!super.update(delta)) {

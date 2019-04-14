@@ -3,6 +3,7 @@ class ObjectLoader {
 
     }
 
+    //load big mesh files async
     loadObjectFiles = async(creator) => {
         let loader = new THREE.ObjectLoader();
         loader.load("textures/weapon/sniper-rifle.json", function(obj) {

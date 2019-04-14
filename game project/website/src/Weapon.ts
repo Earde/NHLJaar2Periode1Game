@@ -7,6 +7,7 @@ class Weapon extends MeshLoader {
         super(new THREE.Geometry(), new THREE.MeshPhongMaterial(), 0, 0, 0);
     }
 
+    //update weapon position based on camera
     update(distance) {
         //rotate weapon to where crosshair is looking
         this.lookAt(new THREE.Vector3(0, 0, -distance));
@@ -15,6 +16,7 @@ class Weapon extends MeshLoader {
         //this.updateMatrix();
     }
 
+    //create new bullet and add to creator
     shoot(creator, isMouseDown, delta, network) {
         if (this.shot) {
             this.shot = creator.bullet.update(delta);

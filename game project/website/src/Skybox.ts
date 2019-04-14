@@ -5,6 +5,7 @@
         this.receiveShadow = false;
     }
 
+    //load skybox
     load(scene) {
         let imagePrefix = "textures/skybox/skybox-";
         let directions = ["xpos", "xneg", "ypos", "yneg", "zpos", "zneg"];

@@ -19,6 +19,7 @@ class MeshLoader extends THREE.Mesh {
         this.loaded = true;
     }
 
+    //create new mesh
     loadObject(obj, scene, scale) {
         let geometry: THREE.Geometry = obj.geometry.clone();
         geometry.computeVertexNormals();
@@ -37,6 +38,7 @@ class MeshLoader extends THREE.Mesh {
         this.load(scene);
     }
 
+    //create texture for mesh
     createMaterial(phong, side, xSets, ySets, uri) {
         let material;
         if (phong) {
@@ -54,6 +56,7 @@ class MeshLoader extends THREE.Mesh {
         return material;
     }
 
+    //get distance from point in direction to mesh
     getDistanceAt(pos: THREE.Vector3, dir: THREE.Vector3) {
         let ray = new THREE.Raycaster(new THREE.Vector3(pos.x, pos.y, pos.z), new THREE.Vector3(dir.x, dir.y, dir.z));
         let obj = ray.intersectObject(this);

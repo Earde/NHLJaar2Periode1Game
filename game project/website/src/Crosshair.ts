@@ -8,6 +8,7 @@
         this.color = color;
     }
 
+    //create crosshair for aiming
     public load(camera: Camera) {
         let material = new THREE.LineBasicMaterial({ color: this.color });
         this.material = material;

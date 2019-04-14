@@ -25,6 +25,7 @@
         this.scene = s;
     }
 
+    //create mesh objects async with set parameters
     createObjects = async() => {
         this.models = [];
         this.skybox = new Skybox(3000, 3000, 3000);
@@ -53,6 +54,7 @@
         await this.loadObjects();
     };
 
+    //load mesh objects after they are created
     loadObjects = async() => {
         this.skybox.load(this.scene);
         this.heightmap.load(this.scene);
@@ -64,6 +66,7 @@
         this.bullet.load();
     };
 
+    //load bigger than usual mesh objects
     loadModels(n) {
         if (n == 0) {
             this.weapon.loadObject(this.models[n], this.camera, new THREE.Vector3(0.6, 0.6, 0.6));

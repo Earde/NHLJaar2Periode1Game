@@ -5,7 +5,7 @@ class Networking {
     //hier wordt de connectie met de server gemaakt
     constructor(creator) {
         this.creator = creator;
-        this.socket = io('https://86.90.153.44', { secure: true, rejectUnauthorized: false, port: '443'});
+        this.socket = io('https://127.0.0.1', { secure: true, rejectUnauthorized: false, port: '443'});
     }
 
     updatePlayer(data) {
@@ -48,7 +48,7 @@ class Networking {
         this.creator.player.updateScore(data, this.creator);
     }
 
-    //hier wordt er naar de server geluisterd of er nieuwe data is
+    //listen to server and process data
     connect() {
         this.socket.on("hoi", function(data) {
             this.updatePlayer(data);

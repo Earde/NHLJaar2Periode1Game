@@ -54,12 +54,14 @@ class Enemy extends MeshLoader {
         this.updateMatrixWorld(true);
     }
 
+    //Event based update on new connection or revive
     forceUpdateFromNetwork(data, creator) {
         this.active = true;
         this.enemyID = data.id;
         this.position.set(creator.heightmap.width * data.percentagex - creator.heightmap.width / 2, 0, creator.heightmap.depth * data.percentagez - creator.heightmap.depth / 2);
     }
 
+    //continually updates for positioning, health and score
     updateFromNetwork(data) {
         this.active = true;
         this.oldPosition.set(this.newestPosition.x, this.newestPosition.y);

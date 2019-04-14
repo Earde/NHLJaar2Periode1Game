@@ -3,6 +3,7 @@
 
     }
 
+    //update each object in creator
     public update(creator: SceneCreator, network: Networking, delta: number, keyMap: Array<boolean>, mouseX: number, mouseY: number, isMouseDown: boolean) {
         for (let i = 0; i < creator.enemies.length; i++) {
             creator.enemies[i].update(delta, creator);

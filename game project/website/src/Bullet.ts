@@ -8,6 +8,7 @@ class Bullet extends THREE.Line {
         this.receiveShadow = false;
     }
 
+    //load bullet mesh
     load() {
         /*
         var material = new THREE.LineBasicMaterial({
@@ -25,6 +26,7 @@ class Bullet extends THREE.Line {
         this.material.needsUpdate = true;
     }
 
+    //activate mesh with new positions + send data to server
     shoot(start, end, network, power) {
         let geometry = new THREE.Geometry();
         geometry.vertices.push(start);
@@ -42,6 +44,7 @@ class Bullet extends THREE.Line {
         network.sendData("shoot", data);
     }
 
+    //let the bullet fade away
     update(delta) {
         this.material.opacity = 1.0 - (this.bulletTime / this.bulletTimeMax);
         this.bulletTime += delta;
